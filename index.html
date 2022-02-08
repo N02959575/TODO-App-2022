@@ -162,7 +162,7 @@
             <nav class="panel">
               <div class="tabs is-boxed">
                 <ul>
-                  <li class="is-active">
+                  <li id="current">
                     <a>
                       <span class="icon is-small"
                         ><i class="fas fa-clipboard-list" aria-hidden="true"></i
@@ -170,7 +170,7 @@
                       <span>Current</span>
                     </a>
                   </li>
-                  <li>
+                  <li id="completed">
                     <a>
                       <span class="icon is-small"
                         ><i class="fas fa-calendar-plus" aria-hidden="true"></i
@@ -178,7 +178,7 @@
                       <span>Completed</span>
                     </a>
                   </li>
-                  <li>
+                  <li id="upcoming">
                     <a>
                       <span class="icon is-small"
                         ><i class="fas fa-calendar-day" aria-hidden="true"></i
@@ -186,7 +186,7 @@
                       <span>Upcoming</span>
                     </a>
                   </li>
-                  <li>
+                  <li class="is-active" id="all">
                     <a>
                       <span class="icon is-small"
                         ><i class="fas fa-calendar" aria-hidden="true"></i
@@ -208,23 +208,27 @@
                   </span>
                 </p>
               </div>
-              <a class="panel-block">
+              <a
+                class="panel-block"
+                name="complete"
+                style="text-decoration: line-through"
+              >
                 <input type="checkbox" checked />
                 Make Bulma great again
               </a>
-              <a class="panel-block">
+              <a class="panel-block" name="pending">
                 <input type="checkbox" />
                 Add some more features
               </a>
-              <a class="panel-block">
+              <a class="panel-block" name="pending">
                 <input type="checkbox" />
                 Make a github account
               </a>
-              <a class="panel-block">
+              <a class="panel-block" name="pending">
                 <input type="checkbox" />
                 Learn how to use github
               </a>
-              <a class="panel-block">
+              <a class="panel-block" name="pending">
                 <input type="checkbox" />
                 add a .gitignore file
               </a>
@@ -265,5 +269,47 @@
         </div>
       </div>
     </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      //this determines which tab is active
+      $(".tabs a").click(function () {
+        $(".tabs li").removeClass("is-active");
+        $(this).parent().addClass("is-active");
+        //only show current tasks
+        if ($(this).parent().is("#current")) {
+          $('[name="complete"]').hide();
+          $('[name="pending"]').show();
+        }
+        //show completed tasks
+        if ($(this).parent().is("#completed")) {
+          $('[name="pending"]').hide();
+          $('[name="complete"]').show();
+        }
+        //show all
+        if ($(this).parent().is("#upcoming") || $(this).parent().is("#all")) {
+          $('[name="complete"]').show();
+          $('[name="pending"]').show();
+        }
+      });
+      //trace line over task if checked, else remove it
+      $('input[type="checkbox"]').click(function () {
+        if ($(this).is(":checked")) {
+          //trace line
+          $(this).parent().css({ "text-decoration": "line-through" });
+          //add name="complete" to parent tag
+          $(this).parent().attr("name", "complete");
+        } else {
+          //remove line
+          $(this).parent().css({ "text-decoration": "" });
+          //remove name from parent tag
+          $(this).parent().attr("name", "pending");
+        }
+      });
+    </script>
   </body>
 </html>
