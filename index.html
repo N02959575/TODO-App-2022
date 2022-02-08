@@ -196,7 +196,7 @@
                   </li>
                 </ul>
               </div>
-              <div class="panel-block">
+              <div class="panel-block" name="newtaskbar">
                 <p class="control has-icons-left">
                   <input
                     class="input is-primary"
@@ -284,16 +284,22 @@
         if ($(this).parent().is("#current")) {
           $('[name="complete"]').hide();
           $('[name="pending"]').show();
+          //shows new task bar
+          $('[name="newtaskbar"]').show();
         }
         //show completed tasks
         if ($(this).parent().is("#completed")) {
           $('[name="pending"]').hide();
           $('[name="complete"]').show();
+          //hides new task bar
+          $('[name="newtaskbar"]').hide();
         }
         //show all
         if ($(this).parent().is("#upcoming") || $(this).parent().is("#all")) {
           $('[name="complete"]').show();
           $('[name="pending"]').show();
+          //shows new task bar
+          $('[name="newtaskbar"]').show();
         }
       });
       //trace line over task if checked, else remove it
