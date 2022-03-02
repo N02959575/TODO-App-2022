@@ -1,5 +1,53 @@
 <script setup lang="ts">
+  import { ref, reactive, onMounted, computed } from "vue";
 
+
+  const message = ref ("Hello Vue!");
+  const currentTab = ref ("All");
+  const text = ref ("");
+  const allTasks = reactive([
+    { task: "Make Bulma great again", checked: true },
+    { task: "Add some more features", checked: false },
+    { task: "Make a github account", checked: false },
+    { task: " Learn how to use github", checked: false },
+    { task: "add a .gitignore file", checked: false },
+  ]);
+        
+  function addTask() {
+    //add a task
+    //check if user typed something
+    if (text.value.trim().length == 0) {
+     
+      alert("Please add a task");
+      return;
+    }
+
+    allTasks.unshift({
+      task: text.value,
+      checked: false,
+    });
+
+    text.value = "";
+  };
+
+  function displayTasks()  {
+      if (currentTab.value == "Completed") {
+        return allTasks.filter(function (t) {
+        return t.checked;
+      });
+      }
+      //if current tab is active then display unchecked tasks
+      if (currentTab.value == "Current") {
+        return allTasks.filter(function (t) {
+          return !t.checked;
+        });
+      }
+      //any other tab displays all
+      else {
+        return allTasks;
+      }
+    }
+        
 </script>
 
 <template>
@@ -60,7 +108,7 @@
                 </div>
                 <div class="panel-block" name="newtaskbar">
                   <form
-                    @submit="addTask"
+                    @submit="addTask()"
                     class="control has-icons-left has-icons-right is-expanded"
                   >
                     <div class="field has-addons is-flex-grow-1">
@@ -76,18 +124,18 @@
                       </span>
 
                       <div class="control">
-                        <button class="button is-primary" @click="addTask()">
+                        <button class="button is-primary" @click="addTask()" type="button">
                           Add
                         </button>
                       </div>
                     </div>
                   </form>
                 </div>
-                <a v-for="x in displayTasks" :key="x.task" class="panel-block">
+                <a v-for="x in displayTasks()" :key="x.task" class="panel-block">
                   <input type="checkbox" v-model="x.checked" />
                   {{x.task}}
                 </a>
-              </nav>
+  </nav>
 </template>
 
 <style>

@@ -16,7 +16,7 @@ import Table from './components/Table.vue';
           <Social/>
         </div>
       </div>
-      <div class="column">
+      <div class="column is-6">
         <Tasks/>
       </div>
       <div class="column">

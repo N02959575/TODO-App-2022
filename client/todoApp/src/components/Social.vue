@@ -15,7 +15,7 @@
                 </header>
                 <div class="card-content">
                   <div class="content">
-                    {{message}}
+                     {{message}}
                     <a href="#">@bulmaio</a>. <a href="#">#css</a>
                     <a href="#">#responsive</a>
                     <br />
