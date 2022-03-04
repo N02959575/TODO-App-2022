@@ -110,6 +110,7 @@
                   <form
                     @submit="addTask()"
                     class="control has-icons-left has-icons-right is-expanded"
+                    
                   >
                     <div class="field has-addons is-flex-grow-1">
                       <input
