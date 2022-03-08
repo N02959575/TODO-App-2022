@@ -1,53 +1,8 @@
 <script setup lang="ts">
-  import { ref, reactive, onMounted, computed } from "vue";
+  import { useTasks } from "../models/tasks";
 
+  const tasks = useTasks();
 
-  const message = ref ("Hello Vue!");
-  const currentTab = ref ("All");
-  const text = ref ("");
-  const allTasks = reactive([
-    { task: "Make Bulma great again", checked: true },
-    { task: "Add some more features", checked: false },
-    { task: "Make a github account", checked: false },
-    { task: " Learn how to use github", checked: false },
-    { task: "add a .gitignore file", checked: false },
-  ]);
-        
-  function addTask() {
-    //add a task
-    //check if user typed something
-    if (text.value.trim().length == 0) {
-     
-      alert("Please add a task");
-      return;
-    }
-
-    allTasks.unshift({
-      task: text.value,
-      checked: false,
-    });
-
-    text.value = "";
-  };
-
-  function displayTasks()  {
-      if (currentTab.value == "Completed") {
-        return allTasks.filter(function (t) {
-        return t.checked;
-      });
-      }
-      //if current tab is active then display unchecked tasks
-      if (currentTab.value == "Current") {
-        return allTasks.filter(function (t) {
-          return !t.checked;
-        });
-      }
-      //any other tab displays all
-      else {
-        return allTasks;
-      }
-    }
-        
 </script>
 
 <template>
@@ -55,8 +10,8 @@
     <div class="tabs is-boxed">
       <ul>
         <li
-          :class="{'is-active': currentTab == 'Current'}"
-          @click="currentTab = 'Current' "
+          :class="{'is-active': tasks.currentTab == 'Current'}"
+          @click="tasks.currentTab = 'Current' "
         >
           <a>
             <span class="icon is-small"
@@ -69,8 +24,8 @@
           </a>
         </li>
         <li
-          :class="{'is-active': currentTab == 'Completed'}"
-          @click="currentTab = 'Completed' "
+          :class="{'is-active': tasks.currentTab == 'Completed'}"
+          @click="tasks.currentTab = 'Completed' "
         >
           <a>
             <span class="icon is-small"
@@ -83,8 +38,8 @@
           </a>
         </li>
         <li
-          :class="{'is-active': currentTab == 'Upcoming'}"
-          @click="currentTab = 'Upcoming' "
+          :class="{'is-active': tasks.currentTab == 'Upcoming'}"
+          @click="tasks.currentTab = 'Upcoming' "
         >
           <a>
             <span class="icon is-small"
@@ -94,8 +49,8 @@
           </a>
         </li>
         <li
-          :class="{'is-active': currentTab == 'All'}"
-          @click="currentTab = 'All' "
+          :class="{'is-active': tasks.currentTab == 'All'}"
+          @click="tasks.currentTab = 'All' "
         >
           <a>
             <span class="icon is-small"
@@ -109,7 +64,7 @@
     <div class="panel-block" name="newtaskbar">
       <!-- @submit.prevent prevents page from reloading when adding new task -->
       <form
-        @submit="addTask()"
+        @submit="tasks.addTask()"
         @submit.prevent 
         class="control has-icons-left has-icons-right is-expanded"
       >
@@ -118,7 +73,7 @@
             class="input is-primary"
             type="text"
             placeholder="New Task"
-            v-model="text"
+            v-model="tasks.text"
             name="text"
           />
           <span class="icon is-left">
@@ -126,14 +81,14 @@
           </span>
 
           <div class="control">
-            <button class="button is-primary" @click="addTask()" type="button">
+            <button class="button is-primary" @click="tasks.addTask()" type="button">
               Add
             </button>
           </div>
         </div>
       </form>
     </div>
-    <a v-for="x in displayTasks()" :key="x.task" class="panel-block">
+    <a v-for="x in tasks.displayTasks()" :key="x.task" class="panel-block">
       <input type="checkbox" v-model="x.checked" />
       {{x.task}}
     </a>
