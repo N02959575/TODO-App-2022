@@ -3,8 +3,12 @@
 import { Login } from '../models/session';
 
 
-function login(){
+function badlogin(){
     Login('Andres Mena', 'meme')
+}
+
+function login(){
+    Login('@joannadoe', 'password')
 }
 
 </script>

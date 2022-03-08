@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { useTasks } from "../models/tasks";
+  import AddTask from "./AddTask.vue";
 
   const tasks = useTasks();
 
@@ -61,36 +62,10 @@
         </li>
       </ul>
     </div>
-    <div class="panel-block" name="newtaskbar">
-      <!-- @submit.prevent prevents page from reloading when adding new task -->
-      <form
-        @submit="tasks.addTask()"
-        @submit.prevent 
-        class="control has-icons-left has-icons-right is-expanded"
-      >
-        <div class="field has-addons is-flex-grow-1">
-          <input
-            class="input is-primary"
-            type="text"
-            placeholder="New Task"
-            v-model="tasks.text"
-            name="text"
-          />
-          <span class="icon is-left">
-            <i class="fas fa-calendar-plus" aria-hidden="true"></i>
-          </span>
-
-          <div class="control">
-            <button class="button is-primary" @click="tasks.addTask()" type="button">
-              Add
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
+     <AddTask/>
     <a v-for="x in tasks.displayTasks()" :key="x.task" class="panel-block">
       <input type="checkbox" v-model="x.checked" />
-      {{x.task}}
+       {{x.creator}}
     </a>
   </nav>
 </template>
