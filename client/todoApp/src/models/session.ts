@@ -22,8 +22,10 @@ export async function Login(handle: string, password: string) {
     router.push('/tasktracker')
 }
 
+
 export function Logout(){
     session.user = null;
+    router.push('/')
 }
 
 export default session;

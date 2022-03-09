@@ -8,7 +8,7 @@ function badlogin(){
 }
 
 function login(){
-    Login('@joannadoe', 'password')
+    Login('@deborahdoe', 'password')
 }
 
 </script>
@@ -42,9 +42,11 @@ function login(){
                 </p>
               </div>
               <div class="field has-text-centered">
+                
                 <button class="button is-light" @click="login">
                   Login
                 </button>
+              
               </div>
             </div>
           </div>

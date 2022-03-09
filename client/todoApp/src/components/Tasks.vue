@@ -24,6 +24,20 @@
             <span>Current</span>
           </a>
         </li>
+         <li
+          :class="{'is-active': tasks.currentTab == 'Created'}"
+          @click="tasks.currentTab = 'Created' "
+        >
+          <a>
+            <span class="icon is-small"
+              ><i
+                class="fas fa-clipboard-list"
+                aria-hidden="true"
+              ></i
+            ></span>
+            <span>Created</span>
+          </a>
+        </li>
         <li
           :class="{'is-active': tasks.currentTab == 'Completed'}"
           @click="tasks.currentTab = 'Completed' "
@@ -63,9 +77,21 @@
       </ul>
     </div>
      <AddTask/>
-    <a v-for="x in tasks.displayTasks()" :key="x.task" class="panel-block">
+    <a v-for="x in tasks.displayTasks()" :key="x.task" class="panel-block" >
       <input type="checkbox" v-model="x.checked" />
-       {{x.task}} {{x.dueDate}}  {{x.taskee}}
+      <span v-if="tasks.currentTab == 'Current'">
+        {{x.task}} <br> Due date: {{x.dueDate}} <br> Created by: {{x.creator}}  
+      </span>
+      <span v-else-if="tasks.currentTab == 'Created'">
+        {{x.task}} <br> Due date: {{x.dueDate}} <br> Assign to: {{x.taskee}}  
+      </span>
+      <span v-else-if="tasks.currentTab == 'Completed'">
+        {{x.task}} <br> Due date: {{x.dueDate}} <br> Completed by: {{x.taskee}}  
+      </span>
+      <span v-else>
+        {{x.task}} <br> Due date: {{x.dueDate}}
+      </span>
+       
     </a>
   </nav>
 </template>
