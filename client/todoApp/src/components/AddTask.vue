@@ -53,10 +53,11 @@ const isOpen = ref(false);
         </div>
 
          <div class="field">
+             Due date.. <br>
              <p class="control has-icons-left has-icons-right">
             <input
                 class="input is-primary"
-                type="text"
+                type="date"
                 placeholder="Assign date mm/dd/yyyy"
                 v-model="tasks.date"
                 name="text"
@@ -70,7 +71,7 @@ const isOpen = ref(false);
               
               <div class="field">
                   <div class="buttons">
-                  <button class="button is-primary" @click="tasks.addTask()" type="button">
+                  <button class="button is-primary" @click="tasks.addTask()"  type="button">
                     Add Task
                 </button>
                 
