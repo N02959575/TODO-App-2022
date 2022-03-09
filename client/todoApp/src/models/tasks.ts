@@ -15,11 +15,11 @@ export const useTasks = defineStore('tasks', {
         date: "",
         target: "",
         allTasks :[
-            { task: "Make Bulma great again", dueDate:"4/1/2022", creator: " ", taskee: "@Obodoe", checked: true },
-            { task: "Add some more features", dueDate:"4/2/2022", creator: "", taskee: "@johndoe", checked: false },
-            { task: "Make a github account", dueDate:"4/3/2022", creator: "users", taskee: "@joannadoe", checked: false },
-            { task: " Learn how to use github", dueDate:"4/4/2022", creator: "users", taskee: "@johndoe", checked: false },
-            { task: "add a .gitignore file", dueDate:"4/5/2022", creator: "", taskee: "@joannadoe", checked: false },
+            { task: "Make Bulma great again", dueDate:"4/1/2022", creator: "@johndoe", taskee: "@Obodoe", checked: true },
+            { task: "Add some more features", dueDate:"4/2/2022", creator: "@joannadoe", taskee: "@johndoe", checked: false },
+            { task: "Make a github account", dueDate:"4/3/2022", creator: "@Obodoe", taskee: "@joannadoe", checked: false },
+            { task: " Learn how to use github", dueDate:"4/4/2022", creator: "@joannadoe", taskee: "@johndoe", checked: false },
+            { task: "add a .gitignore file", dueDate:"4/5/2022", creator: "@Obodoe", taskee: "@joannadoe", checked: false },
           ]
     }),
     actions:{
@@ -59,8 +59,9 @@ export const useTasks = defineStore('tasks', {
             if (this.currentTab == "Completed") {
                
                     return this.allTasks.filter(function (t) {
-                    return t.checked;
-                        });
+                        return t.checked;
+                    
+                    });
                 
             }
             //if current tab is active then display unchecked tasks
@@ -79,6 +80,11 @@ export const useTasks = defineStore('tasks', {
         },
         cancelAddTask() {
             this.isClicked = false
+        },
+        displayUsers(){
+            return users.list.map(function(u){
+                return u.handle
+            })
         }
     }
 

@@ -40,18 +40,16 @@ const isOpen = ref(false);
         </div>
 
         <div class="field">
-            <p class="control has-icons-left has-icons-right">
-            <input
-                class="input is-primary"
-                type="text"
-                placeholder="Assign to.."
-                v-model="tasks.target"
-                name="text"
-            />
-            <span class="icon is-left">
-            <i class="fa-solid fa-user" aria-hidden="true"></i>
-            </span>
-            </p>
+            Assign to.. <br>
+            <div class="select is-primary">
+                <select v-model="tasks.target">
+                    <option disabled value="">Select user</option>
+                    <option v-for="x in tasks.displayUsers()" :key="x">
+                        {{x}}
+                    </option>
+                    
+                </select>
+            </div>
         </div>
 
          <div class="field">
@@ -81,6 +79,12 @@ const isOpen = ref(false);
                 </button>
                 </div>
               </div>
+
+              <div class="field">
+                  
+              </div>
+
+              
     </form>
     </div>
 </div>
