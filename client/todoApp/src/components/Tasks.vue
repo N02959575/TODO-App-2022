@@ -30,8 +30,9 @@
         >
           <a>
             <span class="icon is-small"
-              ><i
-                class="fas fa-clipboard-list"
+              >
+              <i
+                class="fa-solid fa-pen-clip"
                 aria-hidden="true"
               ></i
             ></span>
@@ -89,7 +90,7 @@
         {{x.task}} <br> Due date: {{x.dueDate}} <br> Completed by: {{x.taskee}}  
       </span>
       <span v-else>
-        {{x.task}} <br> Due date: {{x.dueDate}}
+        {{x.task}} <br> Due date: {{x.dueDate}} <br> Created by {{x.creator}} <br> Assign to: {{x.taskee}}
       </span>
        
     </a>

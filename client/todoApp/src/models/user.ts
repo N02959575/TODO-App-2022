@@ -32,7 +32,7 @@ export const list: User[] = [{
 {
     firstName: 'Obo',
     lastName: 'Doe',
-    handle: '@Obodoe',
+    handle: '@obodoe',
     password: 'password',
     email: 'Obo@email.com',
     pic: 'https://randomuser.me/api/portraits/men/3.jpg',
