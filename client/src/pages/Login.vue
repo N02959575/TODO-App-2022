@@ -32,7 +32,7 @@ const password = ""
           <div class="card has-background-primary">
             <div class="card-content">
               <h1 class="title has-text-centered has-text-primary-light	">Login To Your Account</h1>
-              <form @submit="Login(username, password)" @submit.prevent>
+              <form @submit="Login(username, password)" >
               <div class="field">
                 <p class="control has-icons-left has-icons-right">
                   <input class="input" type="text" placeholder="Enter username or email" v-model="username" required/>
