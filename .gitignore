@@ -166,7 +166,7 @@ out
 ### Vuejs ###
 # Recommended template: Node.gitignore
 
-3333333333dist/
+#########dist/
 npm-debug.log
 yarn-error.log
 
