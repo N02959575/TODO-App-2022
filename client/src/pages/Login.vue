@@ -57,6 +57,10 @@ const password = ""
                 <button class="button is-light">
                   Login
                 </button>
+
+                <button class="button is-light" @click="login1()">
+                  Login2
+                </button>
               
               </div>
               </form>
