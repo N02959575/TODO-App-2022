@@ -31,7 +31,7 @@ jobs:
 
     - name: Copy static files
       run: |
-          cp -a client/dist/. dist/
+          cp -a client/todoApp/dist/. dist/
           cp composer.json dist/
           
     - name: Deploy 🚀
