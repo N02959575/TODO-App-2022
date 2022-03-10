@@ -58,6 +58,9 @@ export const useTasks = defineStore('tasks', {
         
         },
         displayTasks()  {
+
+          this.forDates = this.allTasks.slice();
+
             if (this.currentTab == "Completed") {
                
                     return this.allTasks.filter(function (t) {
@@ -80,9 +83,7 @@ export const useTasks = defineStore('tasks', {
               }
             //displays tasks ordered by date
             if (this.currentTab == "Upcoming") {
-                this.forDates = this.allTasks.slice();
                  this.forDates.sort((a, b)=>{
-                     //error here but once the code runs it works cause it is no longer empty
                      return Date.parse(a.dueDate) - Date.parse(b.dueDate);
                 })
                 return this.forDates.filter(function (t) {
