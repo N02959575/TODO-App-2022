@@ -5,6 +5,7 @@ import session from "../models/session"
 
 import * as users from "../models/user"
 
+interface Task { task: string, dueDate: string, creator: string, taskee: string, checked: boolean }
 
 export const useTasks = defineStore('tasks', {
 
@@ -20,8 +21,8 @@ export const useTasks = defineStore('tasks', {
             { task: "Make a github account", dueDate:"2022-4-3", creator: "@obodoe", taskee: "@deborahdoe", checked: false },
             { task: " Learn how to use github", dueDate:"2022-4-10", creator: "@deborahdoe", taskee: "@johndoe", checked: false },
             { task: "add a .gitignore file", dueDate:"2022-4-1", creator: "@obodoe", taskee: "@deborahdoe", checked: false },
-          ],
-        forDates: [{}]
+          ] as Task[],
+        forDates: [] as Task[]
     }),
     actions:{
         addTask() {
