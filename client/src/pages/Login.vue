@@ -8,7 +8,15 @@ function badlogin(){
 }
 
 function login1(){
+    Login('@johndoe', 'password')
+}
+
+function login2(){
     Login('@deborahdoe', 'password')
+}
+
+function login3(){
+    Login('@obodoe', 'password')
 }
 
 const username = ""
@@ -56,14 +64,22 @@ const password = ""
                 
                 <button class="button is-light">
                   Login
-                </button>
-
-                <button class="button is-light" @click="login1()">
-                  Login2
-                </button>
-              
+                </button> 
+                          
               </div>
               </form>
+              added for heroku
+               <div class="buttons">
+                  <button class="button is-light" @click="login1()">
+                  John
+                </button>
+                <button class="button is-light" @click="login2()">
+                  Deborah
+                </button>
+                <button class="button is-light" @click="login3()">
+                  Obo
+                </button>
+               </div>
             </div>
           </div>
         </div>
