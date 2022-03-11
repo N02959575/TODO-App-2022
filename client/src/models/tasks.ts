@@ -32,13 +32,6 @@ export const useTasks = defineStore('tasks', {
        })
 
     })
-
-    // this.forDates = this.allTasks.slice();
-    //   this.forDates.sort((a, b)=>{
-    //       return Date.parse(a.dueDate) - Date.parse(b.dueDate);
-    //  })
-
-      
     },
     actions:{
 
@@ -75,9 +68,7 @@ export const useTasks = defineStore('tasks', {
         
         },
         displayTasks()  {
-
-         
-
+            //displats all completed tasks assign to user or created by them 
             if (this.currentTab == "Completed") {
                
                     return this.allTasks.filter(function (t) {
