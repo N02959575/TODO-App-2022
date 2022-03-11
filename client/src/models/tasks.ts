@@ -76,7 +76,7 @@ export const useTasks = defineStore('tasks', {
         },
         displayTasks()  {
 
-          this.forDates = this.allTasks.slice();
+         
 
             if (this.currentTab == "Completed") {
                
@@ -105,7 +105,7 @@ export const useTasks = defineStore('tasks', {
             //thus recursively triggering itself. Possible sources include component template, 
             //render function, updated hook or watcher source function.
             if (this.currentTab == "Upcoming") {
-              
+              this.forDates = this.allTasks.slice();
                 return this.forDatesSorted.forDates.filter(function (d) {
                      return !d.checked && (d.taskee == session.user?.handle! || d.creator == session.user?.handle!);
                 
