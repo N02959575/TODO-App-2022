@@ -22,7 +22,7 @@ export const useTasks = defineStore('tasks', {
             { task: " Learn how to use github", dueDate:"2022-4-10", creator: "@deborahdoe", taskee: "@johndoe", checked: false },
             { task: "add a .gitignore file", dueDate:"2022-4-1", creator: "@obodoe", taskee: "@deborahdoe", checked: false },
           ] as Task[],
-        forDates: [] as Task[],
+        forDates: [] as Task[]
     }),
     getters:{
 
@@ -76,6 +76,8 @@ export const useTasks = defineStore('tasks', {
         },
         displayTasks()  {
 
+          this.forDates = this.allTasks.slice();
+
             if (this.currentTab == "Completed") {
                
                     return this.allTasks.filter(function (t) {
@@ -103,7 +105,7 @@ export const useTasks = defineStore('tasks', {
             //thus recursively triggering itself. Possible sources include component template, 
             //render function, updated hook or watcher source function.
             if (this.currentTab == "Upcoming") {
-              this.forDates = this.allTasks.slice();
+              
                 return this.forDatesSorted.forDates.filter(function (d) {
                      return !d.checked && (d.taskee == session.user?.handle! || d.creator == session.user?.handle!);
                 
