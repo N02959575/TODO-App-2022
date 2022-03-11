@@ -22,9 +22,26 @@ export const useTasks = defineStore('tasks', {
             { task: " Learn how to use github", dueDate:"2022-4-10", creator: "@deborahdoe", taskee: "@johndoe", checked: false },
             { task: "add a .gitignore file", dueDate:"2022-4-1", creator: "@obodoe", taskee: "@deborahdoe", checked: false },
           ] as Task[],
-        forDates: [] as Task[]
+        forDates: [] as Task[],
     }),
+    getters:{
+
+        forDatesSorted: (state) => ({
+          forDates : [...state.forDates].sort((a, b)=>{
+            return Date.parse(a.dueDate) - Date.parse(b.dueDate);
+       })
+
+    })
+
+    // this.forDates = this.allTasks.slice();
+    //   this.forDates.sort((a, b)=>{
+    //       return Date.parse(a.dueDate) - Date.parse(b.dueDate);
+    //  })
+
+      
+    },
     actions:{
+
         addTask() {
             //add a task
             //check if user typed something
@@ -59,8 +76,6 @@ export const useTasks = defineStore('tasks', {
         },
         displayTasks()  {
 
-          this.forDates = this.allTasks.slice();
-
             if (this.currentTab == "Completed") {
                
                     return this.allTasks.filter(function (t) {
@@ -81,13 +96,16 @@ export const useTasks = defineStore('tasks', {
                   return t.creator == session.user?.handle! && !t.checked;
                 });
               }
+
             //displays tasks ordered by date
+            //runtime-core.esm-bundler.js:38 [Vue warn]: Maximum recursive updates exceeded.
+            //This means you have a reactive effect that is mutating its own dependencies and 
+            //thus recursively triggering itself. Possible sources include component template, 
+            //render function, updated hook or watcher source function.
             if (this.currentTab == "Upcoming") {
-                 this.forDates.sort((a, b)=>{
-                     return Date.parse(a.dueDate) - Date.parse(b.dueDate);
-                })
-                return this.forDates.filter(function (t) {
-                     return !t.checked && (t.taskee == session.user?.handle! || t.creator == session.user?.handle!);
+              this.forDates = this.allTasks.slice();
+                return this.forDatesSorted.forDates.filter(function (d) {
+                     return !d.checked && (d.taskee == session.user?.handle! || d.creator == session.user?.handle!);
                 
                  });;
             }
