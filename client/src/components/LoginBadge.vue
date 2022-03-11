@@ -1,5 +1,8 @@
 <script setup lang="ts">
     import session, { Logout } from "../models/session";
+    import { useTasks } from "../models/tasks";
+
+     const tasks = useTasks();
 </script>
 
 <template>
@@ -19,7 +22,7 @@
                 <i>{{ session.user.email }}</i>
             </div>
         </div>
-        <a class="button is-primary" @click="Logout()">
+        <a class="button is-primary" @click="Logout();tasks.currentTab = 'All'">
             <strong>Log out</strong>
         </a>
     </div>
