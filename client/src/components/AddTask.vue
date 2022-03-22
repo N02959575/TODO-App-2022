@@ -71,7 +71,7 @@ const isOpen = ref(false);
               
               <div class="field">
                   <div class="buttons">
-                  <button class="button is-primary" @click="tasks.addTask()"  type="button">
+                  <button class="button is-primary" @click="tasks.addTask();tasks.cancelAddTask()"  type="button">
                     Add Task
                 </button>
                 
