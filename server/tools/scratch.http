@@ -15,3 +15,17 @@ Content-Type: application/json
   "email": "andres@email.com",
   "pic": "https://randomuser.me/api/portraits/men/4.jpg"
 }
+
+###
+GET http://localhost:3000/api/tasks
+
+###
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+
+{
+  "task": "server test task",
+    "dueDate": "2022-4-10",
+    "creator": "@andresmena",
+    "taskee": "@johndoe"
+}
