@@ -1,5 +1,6 @@
 const express = require('express')
 const usersController = require('./controllers/users');
+const tasksController = require('./controllers/tasks');
 
 
 const app = express()
@@ -14,7 +15,10 @@ app
   .get('/api/', (req, res) => {
   res.send('You are on the homepage');
   })
+
   .use('/api/users', usersController)
+
+  .use('/api/tasks', tasksController)
 
 app.listen(port, () => {
   console.log(`Example app listening http://localhost:${port}`)
