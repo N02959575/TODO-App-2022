@@ -14,7 +14,9 @@
     "url": "git+https://github.com/N02959575/TODO-App-2022.git"
   },
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "dotenv": "^16.0.0",
+    "bcrypt": "^5.0.1"
   },
   "devDependencies": {
     "nodemon":"^2.0.15"
