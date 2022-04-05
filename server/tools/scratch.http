@@ -1,14 +1,18 @@
-http://localhost:3000
+http://localhost:3001
 
 ###
-GET http://localhost:3000/api/users
-
-###
-DELETE  http://localhost:3000/api/users/1
+GET http://localhost:3001/api/users
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
 
 
 ###
-POST http://localhost:3000/api/users
+DELETE  http://localhost:3001/api/users/1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
+
+
+
+###
+POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
@@ -21,7 +25,7 @@ Content-Type: application/json
 }
 
 ###
-PATCH  http://localhost:3000/api/users/2
+PATCH  http://localhost:3001/api/users/2
 Content-Type: application/json
 
 {
@@ -30,14 +34,32 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/api/tasks
-
-###
-DELETE http://localhost:3000/api/tasks/1
-
-###
-POST http://localhost:3000/api/tasks
+POST http://localhost:3001/api/users/login
 Content-Type: application/json
+
+{
+  "email": "deborah@email.com",
+  "password": "password"
+}
+
+###
+GET http://localhost:3001/api/tasks
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
+
+###
+GET http://localhost:3001/api/tasks/mytasks
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
+
+###
+DELETE http://localhost:3001/api/tasks/1
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
+
+
+###
+POST http://localhost:3001/api/tasks
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
+
 
 {
   "task": "server test task",
@@ -47,8 +69,10 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://localhost:3000/api/tasks/2
+PATCH http://localhost:3001/api/tasks/2
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
+
 
 {
     "creator": "@andresmena"

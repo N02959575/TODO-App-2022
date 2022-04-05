@@ -1,3 +1,5 @@
+const userModel = require('./user');
+
 let highestId = 5;
 
 const tasks = [
@@ -6,7 +8,17 @@ const tasks = [
     { task: "Make a github account", dueDate:"2022-4-3", creator: "@obodoe", taskee: "@deborahdoe", checked: false, id: 3 },
     { task: " Learn how to use github", dueDate:"2022-4-10", creator: "@deborahdoe", taskee: "@johndoe", checked: false, id: 4 },
     { task: "add a .gitignore file", dueDate:"2022-4-1", creator: "@obodoe", taskee: "@deborahdoe", checked: false, id: 5 },
-  ]
+  ];
+
+const includeUser = task => ({ ...task, user: userModel.get(task.taskee) });
+
+function get(id){
+    const task = tasks.find(x => x.id === parseInt(id));
+    if(!task){
+        throw { status: 404, message: 'Post not found' };
+    }
+    return includeUser(task) ;
+}
 
 function create(task){
     task.id = ++highestId;
@@ -43,3 +55,4 @@ module.exports = {
         });
     }
 }
+module.exports.get = get;
