@@ -8,13 +8,18 @@ const CREATED_STATUS = 201;
 
 //get all users
 app
-.get('/', requireAuth, (req,res) => {
-    res.send(userModel.list);
+.get('/', requireAuth, (req,res,next) => {
+    userModel.getlist()
+    .then(users => {
+        res.status(200).json(users);
+    }).catch(next)
 })
 //get user by id
-.get('/:id', (req,res) =>{
-    const user = userModel.get(req.params.id);
-    res.send(user);
+.get('/:id', (req,res,next) =>{
+    userModel.get(req.params.id)
+    .then(user => {
+        res.status(200).json(user);
+    }).catch(next)
 })
 //create user
 .post('/', (req,res,next) => {
@@ -25,13 +30,18 @@ app
 })
 //delete user
 .delete('/:id', requireAuth, (req,res) => {
-    const user = userModel.remove(req.params.id);
-    res.send({success: true, errors: [], data: user});
+    userModel.remove(req.params.id)
+    .then(user => {
+        res.send({success: true, errors: [], data: x.insertedIds});
+    }).catch(next);
 })
 //patch is used to update only the fields that are passed in the request
-.patch('/:id', (req,res) => {
-    const user = userModel.update(req.params.id, req.body);
-    res.send({success: true, errors: [], data: user});
+.patch('/:id', (req, res, next) => {
+
+    userModel.update(req.params.id, req.body)
+    .then(user => {
+        res.send({ success: true, errors: [], data: user });
+    }).catch(next);
 })
 //login
 .post('/login', (req,res,next) => {
@@ -40,5 +50,11 @@ app
         res.send(user);
     }).catch(next);
 })
-
+//seed the database with the users created in user.js file
+.post('/seed', (req, res, next) => {
+    userModel.seed()
+    .then(x => {
+        res.send({ success: true, errors: [], data: x.insertedIds });
+    }).catch(next);
+})
 module.exports = app;

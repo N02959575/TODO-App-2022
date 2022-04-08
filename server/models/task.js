@@ -1,4 +1,7 @@
 const userModel = require('./user');
+const {db, isConnected, ObjectId} = require('./mongo');
+
+const collection = db.db("todoApp").collection("tasks");
 
 let highestId = 5;
 
@@ -10,14 +13,18 @@ const tasks = [
     { task: "add a .gitignore file", dueDate:"2022-4-1", creator: "@obodoe", taskee: "@deborahdoe", checked: false, id: 5 },
   ];
 
-const includeUser = task => ({ ...task, user: userModel.get(task.taskee) });
+const includeUser = task => ({ ...task, taskee: userModel.get(task.taskee), creator: userModel.get(task.creator) });
 
-function get(id){
-    const task = tasks.find(x => x.id === parseInt(id));
+async function get(id){
+    const task = await collection.findOne({ _id: new ObjectId(id) });
     if(!task){
         throw { status: 404, message: 'Post not found' };
     }
     return includeUser(task) ;
+}
+
+async function getTasks(){
+    return (await collection.find().toArray()).map(task => ({...task, password: undefined}));
 }
 
 function create(task){
@@ -45,14 +52,15 @@ function update(id, newTask){
     return newTask;
 }
 
+function seed(){
+    return collection.insertMany(tasks);
+}
+
 module.exports = {
     create,
     remove,
     update,
-    get tasks(){
-        return tasks.map(task => {
-            return task;
-        });
-    }
+    seed,
+    getTasks,
 }
 module.exports.get = get;

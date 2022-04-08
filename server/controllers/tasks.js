@@ -7,8 +7,11 @@ const CREATED_STATUS = 201;
 
 app
     //returns all tasks
-    .get('/', (req, res) => {
-        res.send(taskModel.tasks);
+    .get('/', (req,res,next) => {
+        taskModel.getTasks()
+        .then(tasks => {
+            res.status(200).json(tasks);
+        }).catch(next)
     })
     //returns only the tasks that are assigned to the user
     .get('/mytasks', (req, res) => {
@@ -25,6 +28,12 @@ app
     .patch('/:id', (req,res) => {
         const task = taskModel.update(req.params.id, req.body);
         res.send({success: true, errors: [], data: task});
+    })
+    .post('/seed', (req, res, next) => {
+        taskModel.seed()
+        .then(x => {
+            res.send({ success: true, errors: [], data: x.insertedIds });
+        }).catch(next);
     })
 
 module.exports = app;

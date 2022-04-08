@@ -1,5 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const {db, isConnected, ObjectId} = require('./mongo');
+
+const collection = db.db("todoApp").collection("users");
 
 let highestId = 3;
 
@@ -33,11 +36,12 @@ const list = [
 },
 ];
 
-function get(id){
-    return { ...list.find(user => user.id === parseInt(id)), password: undefined }
+async function get(id){
+    const user = await collection.findOne({ _id: new ObjectId(id) });
+    return { ...user, password: undefined }
 }
 
-async function create(user){
+async function create(user){//still need to be able to add new user to database
     user.id = ++highestId;
 
     //the plus converts string to number
@@ -50,12 +54,10 @@ async function create(user){
     return {...user, password: undefined};
 }
 
-function remove(id){
+async function remove(id){
     //... takes all properties and assigns them to outside object
-    const index = list.findIndex(user => user.id === parseInt(id));
-    const user = list.splice(index, 1);
-    
-    return {...user[0], password: undefined};
+    const user = await collection.findOneAndDelete({ _id: new ObjectId(id)});
+    return { ...user.value, password: undefined };
 }
 
 async function update(id, newUser){
@@ -103,6 +105,10 @@ function fromToken(token){
     });
 }
 
+function seed(){
+    return collection.insertMany(list);
+}
+
 module.exports = {
     get,
     create,
@@ -110,7 +116,9 @@ module.exports = {
     update,
     login,
     fromToken,
-    get list(){
-        return list.map(user => ({...user, password: undefined}));
+    collection,
+    seed,
+    async getlist(){
+        return (await collection.find().toArray()).map(user => ({...user, password: undefined}));
     },
 };
