@@ -14,6 +14,13 @@ app
         res.status(200).json(users);
     }).catch(next)
 })
+//get user by handle
+.get('/handle/:handle', (req,res,next) =>{
+    userModel.getByHandle(req.params.handle)
+    .then(user => {
+        res.status(200).json(user);
+    }).catch(next)
+})
 //get user by id
 .get('/:id', (req,res,next) =>{
     userModel.get(req.params.id)
@@ -29,10 +36,10 @@ app
     }).catch(next);//next is used to pass the error to the next middleware
 })
 //delete user
-.delete('/:id', requireAuth, (req,res) => {
+.delete('/:id', requireAuth, (req,res,next) => {
     userModel.remove(req.params.id)
     .then(user => {
-        res.send({success: true, errors: [], data: x.insertedIds});
+        res.send({success: true, errors: [], data: user.insertedIds});
     }).catch(next);
 })
 //patch is used to update only the fields that are passed in the request

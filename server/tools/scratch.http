@@ -6,9 +6,12 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZ
 
 
 ###
-DELETE  http://localhost:3001/api/users/1
+DELETE  http://localhost:3001/api/users/62507cca2d5f17a9a3a4ff67
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
 
+###
+GET http://localhost:3001/api/users/handle/@deborahdoe
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJKb2FubmEiLCJsYXN0TmFtZSI6IkRvZSIsImhhbmRsZSI6IkBqb2FubmFkb2UiLCJlbWFpbCI6IkpvYW5uYUBlbWFpbC5jb20iLCJwaWMiOiJodHRwczovL3JhbmRvbXVzZXIubWUvYXBpL3BvcnRyYWl0cy93b21lbi8yLmpwZyIsImlkIjoyLCJpYXQiOjE2NDkwOTg1NDd9.ZvLgeTWWJNYsUK_tOXMge77JB8HT9LX6Ajk_43pCWaM
 
 
 ###
@@ -25,7 +28,7 @@ Content-Type: application/json
 }
 
 ###
-PATCH  http://localhost:3001/api/users/2
+PATCH  http://localhost:3001/api/users/62549c2af25b97d7459f7aa7
 Content-Type: application/json
 
 {
@@ -43,37 +46,4 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3001/api/tasks
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
-
-###
-GET http://localhost:3001/api/tasks/mytasks
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
-
-###
-DELETE http://localhost:3001/api/tasks/1
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
-
-
-###
-POST http://localhost:3001/api/tasks
-Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
-
-
-{
-  "task": "server test task",
-    "dueDate": "2022-4-10",
-    "creator": "@andresmena",
-    "taskee": "@johndoe"
-}
-
-###
-PATCH http://localhost:3001/api/tasks/2
-Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
-
-
-{
-    "creator": "@andresmena"
-}
+POST http://localhost:3001/api/users/seed
