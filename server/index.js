@@ -12,9 +12,15 @@ const port = process.env.PORT || 3000;
 app
 
   .use('/', express.static(__dirname + '/public/'))
-
+  //cors middleware
+  .use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  })
+  //used for parsing json
   .use(express.json())
-  .use((req, res, next) => {///////////////////////
+  .use((req, res, next) => {
     const auth = req.headers.authorization;
     if(auth){
       const token = auth.split(' ')[1];
@@ -36,7 +42,7 @@ app
   
   .use('/api/users', usersController)
   
-  .use('/api/tasks', requireAuth, tasksController)
+  .use('/api/tasks', /*requireAuth,*/ tasksController)//requireAuth commented out for testing purposes
 
   .use((err, req, res, next) => {
     console.error(err);
