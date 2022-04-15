@@ -21,10 +21,10 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZ
 
 
 {
-  "task": "server test task",
+  "task": "server test2 task for Obo",
     "dueDate": "2022-4-10",
     "creator": "@andresmena",
-    "taskee": "@johndoe"
+    "taskee": "@obodoe"
 }
 
 ###
