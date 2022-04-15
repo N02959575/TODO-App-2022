@@ -3,6 +3,7 @@
   import AddTask from "./AddTask.vue";
 
   const tasks = useTasks();
+  tasks.fetchTasks();
 
 </script>
 
@@ -78,6 +79,7 @@
       </ul>
     </div>
      <AddTask/>
+    <!-- <a v-for="x in tasks.displayTasks()" :key="x.task" class="panel-block" > -->
     <a v-for="x in tasks.displayTasks()" :key="x.task" class="panel-block" >
       <input type="checkbox" v-model="x.checked" />
       <span v-if="tasks.currentTab == 'Current'">
