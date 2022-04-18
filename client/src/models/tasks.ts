@@ -1,13 +1,11 @@
 
 import { defineStore } from 'pinia'
 import { api } from './myFetch';
-import session from "./session"
+import { useSession } from '../models/session';
 import * as users from "./user"
 
-//interface Task { task: string, dueDate: string, creator: string, taskee: string, checked: boolean }
-
 export const useTasks = defineStore('tasks', {
-
+    
     state:() => ({
         isClicked: false,
         currentTab: "All",
@@ -27,10 +25,11 @@ export const useTasks = defineStore('tasks', {
     })
     },
     actions:{
-
+        
         addTask() {
             //add a task
             //check if user typed something
+            const session = useSession();
             if (this.text.trim().length == 0) {
              
               alert("Please add a task");
@@ -61,6 +60,7 @@ export const useTasks = defineStore('tasks', {
         
         },
         displayTasks()  {
+            const session = useSession();
             //displats all completed tasks assign to user or created by them
             switch(this.currentTab) {
                 case "Completed"://displays all completed tasks
@@ -87,6 +87,7 @@ export const useTasks = defineStore('tasks', {
             }
           },
         filterTasksByTaskee(){
+            const session = useSession();
             return this.allTasks.filter(function (t){
                 return t.taskee == session.user?.handle! && t.checked;
             });

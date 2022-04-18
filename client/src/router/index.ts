@@ -4,7 +4,7 @@ import Home from '../pages/Home.vue'
 import Login from '../pages/Login.vue'
 import Signup from '../pages/Signup.vue'
 import Generic from '../pages/Generic.vue'
-import session from "../models/session";
+import {useSession} from "../models/session";
 
 
 // 2. Define some routes
@@ -31,6 +31,7 @@ const router = createRouter({
 
 //Guards:
 router.beforeEach((to, from) =>{
+  const session = useSession();
   if (['/tasktracker'].includes(to.path)){ //list of paths that require logins
     if (!session.user){
       return '/login'
