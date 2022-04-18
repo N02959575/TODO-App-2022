@@ -1,6 +1,6 @@
 const API_URL = 'http://localhost:3001/api/';
 
-export function api(url: string, body?: any, method?: string, headers?: HeadersInit) {/////////////
+export function api(url: string, body?: any, method?: string, headers?: HeadersInit) {
 
   let options: RequestInit = {};
 
