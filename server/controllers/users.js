@@ -11,28 +11,28 @@ app
 .get('/', requireAuth, (req,res,next) => {
     userModel.getlist()
     .then(users => {
-        res.status(200).json(users);
+        res.send({ success: true, errors: [], data: users });
     }).catch(next)
 })
 //get user by handle
 .get('/handle/:handle', (req,res,next) =>{
     userModel.getByHandle(req.params.handle)
     .then(user => {
-        res.status(200).json(user);
+        res.send({ success: true, errors: [], data: user });
     }).catch(next)
 })
 //get user by id
 .get('/:id', (req,res,next) =>{
     userModel.get(req.params.id)
     .then(user => {
-        res.status(200).json(user);
+        res.send({ success: true, errors: [], data: user });
     }).catch(next)
 })
 //create user
 .post('/', (req,res,next) => {
     userModel.create(req.body)
     .then(user => {
-        res.status(CREATED_STATUS).send(user);
+        res.status(CREATED_STATUS).send({ success: true, errors: [], data: user });
     }).catch(next);//next is used to pass the error to the next middleware
 })
 //delete user
