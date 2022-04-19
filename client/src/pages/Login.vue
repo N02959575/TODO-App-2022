@@ -11,17 +11,17 @@ function login(){
     session.Login(email.value, password.value);
 }
 
-function login1(){
-    session.Login('email@email.com', 'password')
-}
+// function login1(){
+//     session.Login('email@email.com', 'password')
+// }
 
-function login2(){
-    session.Login('deborah@email.com', 'password')
-}
+// function login2(){
+//     session.Login('deborah@email.com', 'password')
+// }
 
-function login3(){
-    session.Login('@obodoe', 'password')
-}
+// function login3(){
+//     session.Login('@obodoe', 'password')
+// }
 
 </script>
 
@@ -66,10 +66,12 @@ function login3(){
                 <button class="button is-light">
                   Login
                 </button> 
-                          
+                         
               </div>
+              <!-- dont have an account? -->
+              Don't have an account? <a href="/signup">Sign up</a>
               </form>
-              added for heroku
+              <!-- added for heroku
                <div class="buttons">
                   <button class="button is-light" @click="login1()">
                   John
@@ -80,7 +82,7 @@ function login3(){
                 <button class="button is-light" @click="login3()">
                   Obo
                 </button>
-               </div>
+               </div> -->
             </div>
           </div>
         </div>
