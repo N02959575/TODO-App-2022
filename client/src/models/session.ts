@@ -44,6 +44,33 @@ export const useSession = defineStore( 'session', {
             router.push('/login')
         },
 
+        async signUp(firstName: string, lastName: string, handle: string, email: string, password: string, confirmPassword: string, pic: string) {
+            const messages = useMessages();
+            try {
+                if(password !== confirmPassword) {
+                    messages.notifications.push({
+                        type: "danger",
+                        message: "Passwords do not match",
+                    });
+                } else {
+                    const user = await this.api("users/", { firstName, lastName, handle, email, password, pic });
+                    if(user) {
+                    messages.notifications.push({
+                        type: "success",
+                        message: `Welcome ${user.firstName}`,
+                    });
+                    this.user = user;
+                    router.push(this.destinationUrl ?? '/tasktracker');
+                    }
+                }
+            } catch (error: any) {
+                messages.notifications.push({
+                    type: "danger",
+                    message: error.message,
+                });
+            }
+        },
+
         async api(url: string, data?: any, method?: 'GET' | 'POST' | 'PUT' | 'DELETE', headers?: any) {
             const messages = useMessages();
 
