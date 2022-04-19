@@ -8,11 +8,11 @@
 
 <template>
     <div class="buttons" v-if="!session.user">
-        <router-link class="button is-primary" to="/signup">
+        <router-link class="button is-light" to="/signup">
             <strong>Sign up</strong>
         </router-link>
         <router-link class="button is-light" to="/login">
-            Log in
+            <strong>Log in</strong>
         </router-link>
     </div>
     <div class="buttons" v-else>
@@ -23,7 +23,7 @@
                 <i>{{ session.user.email }}</i>
             </div>
         </div>
-        <a class="button is-primary" @click="session.Logout();tasks.currentTab = 'All'">
+        <a class="button is-light" @click="session.Logout();tasks.currentTab = 'All'">
             <strong>Log out</strong>
         </a>
     </div>

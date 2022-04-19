@@ -10,12 +10,11 @@ import Messages from './Messages.vue';
 <template>
          <nav class="navbar is-primary">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item" >
           <img
-            src="https://bulma.io/images/bulma-logo-white.png"
-            alt="Bulma: a modern CSS framework based on Flexbox"
-            width="112"
-            height="28"
+            src="../assets/dragonball.png"
+            alt="random logo"
+            
           />
         </a>
         <a role="button" 
@@ -82,6 +81,13 @@ import Messages from './Messages.vue';
     </nav>
 </template>
 
-<style>
-
+<style scoped>
+img {
+            width: 48px;
+            height: 48px;
+            max-height: max-content;
+            border-radius: 10%;
+            overflow: hidden;
+            object-fit: cover;
+        }
 </style>
