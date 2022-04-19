@@ -38,4 +38,4 @@ export const list: User[] = [{
     pic: 'https://randomuser.me/api/portraits/men/3.jpg',
     id: 3,
 },
-]
+];

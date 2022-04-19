@@ -32,11 +32,20 @@ const router = createRouter({
 //Guards:
 router.beforeEach((to, from) =>{
   const session = useSession();
-  if (['/tasktracker'].includes(to.path)){ //list of paths that require logins
-    if (!session.user){
-      return '/login'
-    }
+ 
+  if(session.destinationUrl == null && to.path != '/login') {
+      session.destinationUrl = to.path;
   }
+  console.log({ to });
+  const protectedUrls = ['/tasktracker'];
+  console.log({ protectedUrls });
+
+  if (protectedUrls.includes(to.path)) { // list of paths that require login
+    console.log('requires login');
+    if (!session.user) {
+        return '/login';
+    }
+}
 })
 
 export default router;

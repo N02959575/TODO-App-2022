@@ -54,7 +54,7 @@ app
 .post('/login', (req,res,next) => {
     userModel.login(req.body.email, req.body.password)
     .then(user => {
-        res.send(user);
+        res.send({ success: true, errors: [], data: user });
     }).catch(next);
 })
 //seed the database with the users created in user.js file

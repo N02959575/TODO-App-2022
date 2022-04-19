@@ -28,11 +28,10 @@ Content-Type: application/json
 }
 
 ###
-PATCH  http://localhost:3001/api/users/62549c2af25b97d7459f7aa7
+PATCH  http://localhost:3001/api/users/62549c2af25b97d7459f7aa6
 Content-Type: application/json
 
 {
-  "lastName": "Mena III",
   "password": "password"
 }
 

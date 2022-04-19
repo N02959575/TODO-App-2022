@@ -41,10 +41,10 @@ function login3(){
           <div class="card has-background-primary">
             <div class="card-content">
               <h1 class="title has-text-centered has-text-primary-light	">Login To Your Account</h1>
-              <form @submit="login" @submit.prevent>
+              <form @submit.prevent="login">
               <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                  <input class="input" type="text" placeholder="Enter email" v-model="email" required/>
+                  <input class="input" type="email" placeholder="Enter email" v-model="email" required/>
                     <span class="icon is-small is-left">
                       <i class="fa-solid fa-id-card"></i>
                     </span>

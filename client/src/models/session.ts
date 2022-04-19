@@ -1,7 +1,7 @@
+import router from "../router";
 import { defineStore } from 'pinia';
 import { useMessages } from './messages';
-import router from "../router";
-import * as users from "../models/user";
+import * as users from "./user";
 import { api } from './myFetch';
 
 export const useSession = defineStore( 'session', {
@@ -17,16 +17,16 @@ export const useSession = defineStore( 'session', {
         
             try {
                 const user = await this.api("users/login", { email, password });
-        
+                console.log(user);
                 if(user) {
-        
+
                     messages.notifications.push({
                         type: "success",
                         message: `Welcome back ${user.firstName}`,
                     });
                 
                     this.user = user;
-                    router.push(this.destinationUrl ?? '/wall');
+                    router.push(this.destinationUrl ?? '/tasktracker');
                 }
                 
             } catch (error: any) {
