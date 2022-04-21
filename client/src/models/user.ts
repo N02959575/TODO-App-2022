@@ -8,7 +8,7 @@ export interface User{
     email: string;
     pic: string;
     id: number;
-
+    token?: string; // ? means optional property (allowed to be null or skipped)
 }
 
 export const list: User[] = [{

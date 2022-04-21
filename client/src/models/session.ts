@@ -71,8 +71,12 @@ export const useSession = defineStore( 'session', {
             }
         },
 
-        async api(url: string, data?: any, method?: 'GET' | 'POST' | 'PUT' | 'DELETE', headers?: any) {
+        async api(url: string, data?: any, method?: 'GET' | 'POST' | 'PUT' | 'DELETE', headers: any = {}) {//gave headers a default value
             const messages = useMessages();
+
+            if(this.user?.token) {//if user has a token
+                headers.Authorization = `Bearer ${this.user.token}`;
+            }
 
             try {
                 const response = await api(url, data, method, headers);

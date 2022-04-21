@@ -6,7 +6,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZ
 
 
 ###
-DELETE  http://localhost:3001/api/users/62507cca2d5f17a9a3a4ff67
+DELETE  http://localhost:3001/api/users/625e1bbba93e0413601ef8a5
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJEZWJvcmFoIiwibGFzdE5hbWUiOiJNZW5hIElJSSIsImhhbmRsZSI6IkBkZWJvcmFoZG9lIiwiZW1haWwiOiJkZWJvcmFoQGVtYWlsLmNvbSIsInBpYyI6Imh0dHBzOi8vcmFuZG9tdXNlci5tZS9hcGkvcG9ydHJhaXRzL3dvbWVuLzIuanBnIiwiaWQiOjIsImlhdCI6MTY0OTE3MDQxMH0.PS09DR-a2KQcn5POWy7dXjZy9VkS8FtL-OGlLL5mzCU
 
 ###
