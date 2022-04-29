@@ -1,40 +1,47 @@
 <script setup lang="ts">
-
+    import { useSession } from "../models/session";
+    import { useUser } from "../models/user"
+  
+    const session = useSession();
+    const users = useUser();
+    users.getUsers();
 </script>
 
 <template>
-              <h1 class="title">Table of contents</h1>
-              <h1 class="subtitle">Intra-page navigation</h1>
-              <aside class="menu">
-                <p class="menu-label">General</p>
-                <ul class="menu-list">
-                  <li><a>Dashboard</a></li>
-                  <li><a>Customers</a></li>
-                </ul>
-                <p class="menu-label">Administration</p>
-                <ul class="menu-list">
-                  <li><a>Team Settings</a></li>
-                  <li>
-                    <a class="is-active">Manage Your Team</a>
-                    <ul>
-                      <li><a>Members</a></li>
-                      <li><a>Plugins</a></li>
-                      <li><a>Add a member</a></li>
-                    </ul>
-                  </li>
-                  <li><a>Invitations</a></li>
-                  <li><a>Cloud Storage Environment Settings</a></li>
-                  <li><a>Authentication</a></li>
-                </ul>
-                <p class="menu-label">Transactions</p>
-                <ul class="menu-list">
-                  <li><a>Payments</a></li>
-                  <li><a>Transfers</a></li>
-                  <li><a>Balance</a></li>
-                </ul>
-              </aside>
+  <article class="panel is-primary">
+  <p class="panel-heading">
+    Users
+  </p>
+
+  <a class="panel-block" v-for="x in users.displayUsersList()" :key="x.id">
+    <div class="avatar">
+            <img :src="x.pic" />
+            <div>
+                <strong>{{ x.firstName }} {{ x.lastName }}</strong> <br />
+                <i>{{ x.email }}</i>
+            </div>
+        </div>
+  </a>
+  
+</article>
+
 </template>
 
-<style>
-
+<style scoped lang="scss">
+    .avatar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: .5em;
+        gap: .5em;
+        line-height: 1em;
+        img {
+            width: 48px;
+            height: 48px;
+            max-height: max-content;
+            border-radius: 10%;
+            overflow: hidden;
+            object-fit: cover;
+        }
+    }
 </style>
