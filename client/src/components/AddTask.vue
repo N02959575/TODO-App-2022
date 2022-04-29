@@ -2,8 +2,12 @@
 import { ref } from 'vue';
 import { useTasks, Task } from "../models/tasks";
 import {useSession} from "../models/session";
+import { useUser } from "../models/user"
 
 const session = useSession();
+
+const users = useUser();
+users.getUsers();
 
 const tasks = useTasks();
 const taskToAdd = ref('');
