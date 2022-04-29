@@ -13,7 +13,8 @@
 
 
   function signUp(){
-      session.signUp(firstName.value, lastName.value, handle.value, email.value, password.value, confirmPassword.value, image.value);
+      const username = '@' + handle.value;
+      session.signUp(firstName.value, lastName.value, username, email.value, password.value, confirmPassword.value, image.value);
   }
 </script>
 
@@ -53,7 +54,7 @@
                 <p class="control has-icons-left has-icons-right">
                   <input class="input" type="text" placeholder="Username" v-model="handle"  required/>
                     <span class="icon is-small is-left">
-                      <i class="fa-solid fa-user"></i>
+                      <i class="fa-solid fa-id-badge"></i>
                     </span>
                     <span class="icon is-small is-right">
                       <i class="fas fa-check"></i>
@@ -89,9 +90,9 @@
               </div>
               <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                  <input class="input" type="text" placeholder="Image" v-model="image" required/>
+                  <input class="input" type="text" placeholder="Image Link" v-model="image" required/>
                     <span class="icon is-small is-left">
-                      <i class="fa-solid fa-user"></i>
+                      <i class="fa-solid fa-image-portrait"></i>
                     </span>
                     <span class="icon is-small is-right">
                       <i class="fas fa-check"></i>
