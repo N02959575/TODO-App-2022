@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import { api } from './myFetch';
 import { useSession } from '../models/session';
 import { useMessages } from './messages';
-import * as users from "./user"
+import { useUser } from "./user"
 
 export const useTasks = defineStore('tasks', {
     
@@ -128,7 +128,9 @@ export const useTasks = defineStore('tasks', {
         cancelAddTask() {
             this.isClicked = false
         },
+
         displayUsers(){
+            const users = useUser();
             return users.list.map(function(u){
                 return u.handle
             })
