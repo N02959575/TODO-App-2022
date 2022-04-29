@@ -11,18 +11,6 @@ function login(){
     session.Login(email.value, password.value);
 }
 
-// function login1(){
-//     session.Login('email@email.com', 'password')
-// }
-
-// function login2(){
-//     session.Login('deborah@email.com', 'password')
-// }
-
-// function login3(){
-//     session.Login('@obodoe', 'password')
-// }
-
 </script>
 
 <template> 
@@ -71,18 +59,6 @@ function login(){
               <!-- dont have an account? -->
               Don't have an account? <a href="/signup">Sign up</a>
               </form>
-              <!-- added for heroku
-               <div class="buttons">
-                  <button class="button is-light" @click="login1()">
-                  John
-                </button>
-                <button class="button is-light" @click="login2()">
-                  Deborah
-                </button>
-                <button class="button is-light" @click="login3()">
-                  Obo
-                </button>
-               </div> -->
             </div>
           </div>
         </div>
