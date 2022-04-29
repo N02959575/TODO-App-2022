@@ -8,7 +8,7 @@ const CREATED_STATUS = 201;
 
 //get all users
 app
-.get('/', requireAuth, (req,res,next) => {
+.get('/', /*requireAuth,*/ (req,res,next) => {//requireAuth removed for testing
     userModel.getlist()
     .then(users => {
         res.send({ success: true, errors: [], data: users });
