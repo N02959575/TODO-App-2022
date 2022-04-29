@@ -4,7 +4,7 @@ const {db, isConnected, ObjectId} = require('./mongo');
 
 const collection = db.db("todoApp").collection("users");
 
-let highestId = 3;
+let highestId = 5;
 
 const list = [
 {
@@ -56,7 +56,8 @@ async function getByHandle(handle){
 
 //create user
 async function create(user){
-    user.id = ++highestId;
+    // ++highestId;
+    // user.pic = 'https://randomuser.me/api/portraits/men/'+ highestId + '.jpg';
         if(!user.handle){
             throw { statusCode: 400, message: 'Handle is required' };
         }
