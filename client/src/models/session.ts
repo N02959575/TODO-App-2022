@@ -11,6 +11,7 @@ export const useSession = defineStore( 'session', {
     }),
     
     actions: {
+        //function for logging in
         async Login(email: string, password: string) {
     
             const messages = useMessages();
@@ -43,7 +44,7 @@ export const useSession = defineStore( 'session', {
             this.user = null;
             router.push('/login')
         },
-
+        // function for signup
         async signUp(firstName: string, lastName: string, handle: string, email: string, password: string, confirmPassword: string, pic: string) {
             const messages = useMessages();
             try {
@@ -60,8 +61,8 @@ export const useSession = defineStore( 'session', {
                         message: `Welcome ${user.firstName}`,
                     });
                     this.user = user;
-                    router.push(this.destinationUrl ?? '/tasktracker');
                     }
+                    router.push(this.destinationUrl ?? '/tasktracker');
                 }
             } catch (error: any) {
                 messages.notifications.push({
