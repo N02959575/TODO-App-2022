@@ -80,6 +80,7 @@
     </div>
      <AddTask/>
     <a v-for="x in tasks.displayTasks()" :key="x.task" class="panel-block" >
+      <p class="control">
       <input type="checkbox" v-model="x.checked" />
       <span v-if="tasks.currentTab == 'Current'">
         {{x.task}} <br> Due date: {{x.dueDate}} <br> Created by: {{x.creator}}  
@@ -93,6 +94,13 @@
       <span v-else>
         {{x.task}} <br> Due date: {{x.dueDate}} <br> Created by {{x.creator}} <br> Assign to: {{x.taskee}}
       </span>
+      </p>
+      
+      <p class="field is-grouped is-grouped-right">
+        <button class="button is-danger is-rounded" @click="tasks.deleteTask(x)">Delete Task</button>
+      </p>
+      
+      
        
     </a>
   </nav>
