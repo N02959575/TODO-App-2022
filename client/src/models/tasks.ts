@@ -1,3 +1,4 @@
+import { Task } from './tasks';
 
 import { defineStore } from 'pinia'
 import { api } from './myFetch';
@@ -14,7 +15,7 @@ export const useTasks = defineStore('tasks', {
         date: "",
         target: "",
         allTasks : [] as Task[],
-        forDates: [] as Task[]
+        forDates: [] as Task[],
     }),
     getters:{
 
@@ -31,12 +32,14 @@ export const useTasks = defineStore('tasks', {
           const messages = useMessages();
           try {
             const taskToAdd = await this.api('tasks/', {task, dueDate, creator, taskee});
+            console.log(taskToAdd);
             if(taskToAdd) {
               messages.notifications.push({
                 type: "success",
                 message: `Task added for ${taskToAdd.taskee}`,
             });
             }
+            
 
           } catch (error: any) {
             messages.notifications.push({
@@ -54,40 +57,6 @@ export const useTasks = defineStore('tasks', {
           this.allTasks.push(newTask);
         },
 
-        
-        // addTask() {
-        //     //add a task
-        //     //check if user typed something
-        //     const session = useSession();
-        //     if (this.text.trim().length == 0) {
-             
-        //       alert("Please add a task");
-        //       return;
-        //     }
-        //     if (this.target.trim().length == 0) {
-            
-        //         alert("Please add who to assign to");
-        //         return;
-        //     }
-        //     if (this.date.trim().length == 0) {
-             
-        //         alert("Please add a date");
-        //         return;
-        //     }
-
-        
-        //     this.allTasks.unshift({
-        //       task: this.text,
-        //       dueDate: this.date,
-        //       creator: session.user?.handle!,
-        //       taskee: this.target,
-        //       checked: false,
-        //     });
-        //     this.text = "";
-        //     this.date = "";
-        //     this.target = "";
-        
-        // },
         displayTasks()  {
             const session = useSession();
             //displats all completed tasks assign to user or created by them
@@ -119,8 +88,26 @@ export const useTasks = defineStore('tasks', {
             const session = useSession();
             return this.allTasks.filter(function (t){
                 return t.taskee == session.user?.handle! && t.checked;
+            }); 
+        },
+        //delete task from database
+        async deleteTask(task: Task){
+          const messages = useMessages();
+          try {
+            const taskToDelete = await this.api(`tasks/${task._id}`, 'DELETE');
+            console.log(taskToDelete);
+            if(taskToDelete) {
+              messages.notifications.push({
+                type: "success",
+                message: "Task deleted",
             });
-            
+            }
+          } catch (error: any) {
+            messages.notifications.push({
+              type: "danger",
+              message: error.message,
+          });
+          }
         },
         showAddTask() {
             this.isClicked = true
@@ -162,6 +149,7 @@ export const useTasks = defineStore('tasks', {
 })
 
 export interface Task {
+    _id?: string;
     task: string,
     dueDate: string,
     creator: string,
