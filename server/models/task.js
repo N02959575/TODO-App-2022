@@ -44,9 +44,9 @@ async function create(task){
 
 //delete task
 async function remove(id){
-    const task = await collection.findOneAndDelete({ _id: new ObjectId(id) });
-    
-    return includeUser(task.value);
+    const task = await collection.findOneAndDelete({ _id: ObjectId(id) });
+    console.log(task.value);
+    return task.value;
 }
 
 //update task
