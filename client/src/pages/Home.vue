@@ -23,7 +23,7 @@
                     <div class="card">
                         <div class="card-image">
                             <figure class="image is-4by3">
-                            <img src="../assets/office 2.jpg" alt="Placeholder image">
+                            <img src="../assets/office.jpg" alt="Placeholder image">
                             </figure>
                         </div>
                     </div>

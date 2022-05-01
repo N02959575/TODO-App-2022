@@ -1,5 +1,3 @@
-import { Task } from './tasks';
-
 import { defineStore } from 'pinia'
 import { api } from './myFetch';
 import { useSession } from '../models/session';
