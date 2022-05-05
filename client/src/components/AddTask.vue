@@ -24,6 +24,7 @@ function addTask() {
 function submitAndHide() {
     addTask();
     tasks.cancelAddTask();
+    tasks.fetchTasks();
 }
 </script>
 
