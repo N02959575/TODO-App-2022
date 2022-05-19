@@ -14,6 +14,13 @@ app
         res.send({ success: true, errors: [], data: users });
     }).catch(next)
 })
+//get user list by search
+.get('/search/:search', /*requireAuth,*/ (req,res,next) => {//requireAuth removed for testing
+    userModel.getSearchList(req.params.search)
+    .then(users => {
+        res.send({ success: true, errors: [], data: users });
+    }).catch(next)
+})
 //get user by handle
 .get('/handle/:handle', (req,res,next) =>{
     userModel.getByHandle(req.params.handle)

@@ -45,6 +45,15 @@ async function get(id){
     return { ...user, password: undefined }
 }
 
+//get list of users by search
+async function getSearchList(search){
+    const users = await collection.find({ $or: [
+        { firstName: { $regex: search, $options: 'i' } }, 
+        { lastName: { $regex: search, $options: 'i' } }, 
+        { handle: { $regex: search, $options: 'i' } }] }).toArray();
+    return users.map(user => ({ ...user, password: undefined }));
+}
+
 //get user by handle
 async function getByHandle(handle){
     const user = await collection.findOne({ handle });
@@ -135,6 +144,7 @@ function seed(){
 
 module.exports = {
     get,
+    getSearchList,
     create,
     remove,
     update,
