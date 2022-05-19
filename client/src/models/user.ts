@@ -8,6 +8,23 @@ export const useUser = defineStore('users', {
         list: [] as User[]
     }),
     actions: {
+
+        //oruga autocomplete
+        async getUsersAutoComplete(search: string) {
+            const session = useSession();
+            const users = await session.api('users/search/', { search });
+            this.list = users;
+            return this.list.filter(option => {
+                return (
+                    option
+                    .toString()
+                    .toLowerCase()
+                    .indexOf(search.toLowerCase()) >= 0
+                );
+            }
+            );
+        },
+
         async getUsers() {
             const users = await this.api('users');
             this.list = users;
