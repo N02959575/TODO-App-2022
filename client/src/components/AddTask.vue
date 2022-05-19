@@ -15,6 +15,14 @@ const date = ref('');
 const taskee = ref('');
 const creator = session.user?.handle!;
 
+const input = ""
+//const data: [],
+const selected =  null;
+const isFetching =  false;
+const name = ref('');
+const page =  1;
+const totalPages =  1;
+
 
 const isOpen = ref(false);
 
@@ -26,6 +34,8 @@ function submitAndHide() {
     tasks.cancelAddTask();
     tasks.fetchTasks();
 }
+
+
 </script>
 
 <template>
@@ -73,6 +83,67 @@ function submitAndHide() {
                 </select>
             </div>
         </div>
+
+        <!-- <div class="field"> -->
+<!-- for oruga autocomplete -->
+<!-- user search -->
+<!-- 
+            <p class="control has-icons-left has-icons-right">
+            <input
+                class="input has-dropdown is-primary"
+                type="search"
+                placeholder="Search..."
+                v-model="input"
+                name="text"
+                required
+            />
+            <span class="icon is-left">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+            </p>
+            
+            <div class="select is-primary">
+                <select v-model="taskee">
+                    <option disabled value="">Select user</option>
+                    <option v-for="x in users.getUsersAutoComplete(input)" :key="x.toString">
+                        {{x}}
+                    </option>
+                    
+                </select>
+            </div>
+
+        </div>
+
+        <p class="content"><b>Selected:</b> {{ selected }}</p>
+    <o-field label="Find a User">
+      <o-autocomplete
+        :data="users.list"
+        placeholder="Search"
+        field="title"
+        :loading="isFetching"
+        check-infinite-scroll
+        :debounce-typing="500"
+        @typing="users.getUsersAutoComplete(input)"
+      >
+        <template v-slot="props">
+          <div class="media">
+            <div class="media-left">
+              <img width="32" :src="`https://image.tmdb.org/t/p/w500/${props.option.poster_path}`" />
+            </div>
+            <div class="media-content">
+              {{ props.option.title }}
+              <br />
+              <small> Released at {{ props.option.release_date }}, rated <b>{{ props.option.vote_average }}</b> </small>
+            </div>
+          </div>
+        </template>
+        <template  v-slot="footer">
+          <span v-show="page > totalPages" class="has-text-grey"> Thats it! No more movies found. </span>
+        </template>
+      </o-autocomplete>
+    </o-field> -->
+
+<!-- end user search -->        
 
          <div class="field">
              Due date.. <br>
